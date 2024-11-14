@@ -1,1 +1,1 @@
-# http-seniorskebyty-ceskobratrska.cz-
+# seniorskebyty-ceskobratrska.cz-
