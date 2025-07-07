@@ -1,143 +1,154 @@
 body {
-    font-family: 'Metropolis', sans-serif;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden; /* Zabraňuje horizontálnímu scrollování */
-    font-stretch: condensed;
-    font-style: normal;
-}
+      font-family: 'Metropolis', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #f4f4f4;
+      flex-wrap: wrap;
+    }
+    .top-text {
+        flex-shrink: 1;
+        flex-grow: 1;
+        font-size: 1.5rem;
+        font-weight: 300;
+        text-align: left;
+        white-space: nowrap; /* zabrání zalomení textu */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+    }
+    .menu {
+      position: relative;
+    }
+    .menu-text {
+      display: flex;
+      gap: 15px;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .menu-text span::after {
+      content: ' /';
+    }
+    .menu-text span:last-child::after {
+      content: '';
+    }
+    .menu-text a:hover {
+      font-weight: bold;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle div {
+      width: 22px;
+      height: 2px;
+      background-color: black;
+      margin: 4px 0;
+    }
+    .grey-square {
+      background-color: #f4f3f3;
+      height: 60px;
+      width: 100%;
+    }
+    .first-mid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 40px 20px;
+    }
+    .first-mid img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .first-mid img:hover {
+      transform: scale(1.05);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+    }
+    .lightbox .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lightbox .prev {
+      left: 20px;
+    }
+    .lightbox .next {
+      right: 20px;
+    }
+    @media (max-width: 600px) {
+      .menu-text {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        text-align: center;
+        top: 60px;
+        left: auto;
+        right: 0;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+      .menu-text.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
 
-a {
-    text-decoration: none; /* Zruší podtržení */
-    color: inherit; /* Nastaví barvu podle rodiče, ne výchozí modrou */
-}
-a:hover {
-    color: #333; /* Barva při najetí myší (můžeš přizpůsobit podle potřeby) */
-}
+      .top-text {
+        font-size: 1rem; /* menší velikost pro mobil */
+        max-width: 70%;
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+     }
 
-.top {
-    position: absolute;
-    top: 0;
-    height: 15%;
-    width: 100%;
-}
+      .menu-text span::after {
+      content: '';
+    }
 
-.top-text {
-    color: black;
-    top: 38%;
-    position: absolute;
-    left: 3%;
-    font-size: 25px;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-    font-weight: 100;
-    cursor: pointer;
-}
 
-.menu {
-    position: absolute;
-    flex-direction: column;
-    height: 7%;
-    width: 57%;
-    top: 40.5%;
-    right: 0;
-}
-
-.menu-text {
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    gap: 10px;
-    font-size: 18px;
-    top: 50%;
-    letter-spacing: 2px;
-    transition: font-weight 0.3s ease;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-
-}
-
-.menu-text :hover {
-    font-weight: bold;
-}
-
-.menu-text span::after {
-    content: ' /';
-    
-}
-
-.menu-text span:last-child::after {
-    content: '';
-}
-
-.grey-square {
-    background-color: rgb(244, 243, 243);
-    position: absolute;
-    top: 15%;
-    width: 100%;
-    height: 10%;
-}
-
-.first-mid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    position: absolute;
-    gap: 10px;
-    height: 80%;
-    width: 100%;
-    top: 25%;
-    margin: 0 auto;
-}
-
-.first-mid img {
-    position: relative;
-    top: 5%;
-    left: 12%;
-    width: 75%;
-    height: auto;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-.gallery img:hover {
-    transform: scale(1.1); /* Zvětšení obrázku při najetí myší */
-}
-/* Styl pro lightbox */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-.lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-}
-.lightbox .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    color: white;
-    text-decoration: none;
-}
-
-.lightbox .nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 50px;
-    color: white;
-    cursor: pointer;
-    user-select: none;
-}
-.lightbox .prev {
-    left: 20px;
-}
-.lightbox .next {
-    right: 20px;
-}
+    }

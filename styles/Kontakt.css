@@ -1,251 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Metropolis', sans-serif;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden; /* Zabraňuje horizontálnímu scrollování */
-    font-stretch: condensed;
-    font-style: normal;
+  font-family: 'Metropolis', sans-serif;
+  font-style: normal;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none; /* Zruší podtržení */
-    color: inherit; /* Nastaví barvu podle rodiče, ne výchozí modrou */
+  text-decoration: none;
+  color: inherit;
 }
 a:hover {
-    color: #333; /* Barva při najetí myší (můžeš přizpůsobit podle potřeby) */
+  color: #333;
 }
 
+/* Header */
 .top {
-    position: absolute;
-    top: 0;
-    height: 15%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  flex-wrap: wrap;
 }
 
 .top-text {
-    color: black;
-    top: 38%;
-    position: absolute;
-    left: 3%;
-    font-size: 25px;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-    font-weight: 100;
-    cursor: pointer;
+  flex-shrink: 1;
+  flex-grow: 1;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: left;
+  white-space: nowrap; /* zabrání zalomení textu */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 }
 
 .menu {
-    position: absolute;
-    flex-direction: column;
-    height: 7%;
-    width: 57%;
-    top: 40.5%;
-    right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .menu-text {
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    gap: 10px;
-    font-size: 18px;
-    top: 50%;
-    letter-spacing: 2px;
-    transition: font-weight 0.3s ease;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-
-}
-
-.menu-text :hover {
-    font-weight: bold;
+  display: flex;
+  gap: 15px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .menu-text span::after {
-    content: ' /';
-    
+  content: ' /';
+}
+.menu-text span:last-child::after {
+  content: '';
 }
 
-.menu-text span:last-child::after {
-    content: '';
+.menu-text a:hover {
+  font-weight: bold;
 }
 
 .grey-square {
-    background-color: rgb(244, 243, 243);
-    position: absolute;
-    top: 15%;
-    width: 100%;
-    height: 10%;
+  background-color: #f4f3f3;
+  height: 60px;
+  width: 100%;
 }
 
 .mid {
-    position: absolute;
-    height: 140%;
-    width: 100%;
-    top: 25%;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
+  padding: 40px 20px;
 }
 
 .title {
-    position: relative;
-    height: 10%;
-    width: 15%;
-    align-items: center;
-    justify-content: center;
-    left: 43.55%;
-    top: -2%;
-    font-size: 50px;
-    color: #777;
-    font-weight: 400;
+  text-align: center;
+  font-size: 2rem;
+  color: #777;
+  font-weight: 400;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
 }
 
 .layout {
-    display: flex;
-    position: relative;
-    height: 85%;
-    width: 90%;
-    left: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }
-
-.column-1 {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.row {
-    margin-left: 10px;
-    width: 95%;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 20px;
-    margin-bottom: 15px
-}
-
-.row-1 {
-    height: 10%;
-    font-size: 30px;
-    align-items: center;
-    margin-bottom: 35px;
-    color: #777;
-}
-
-.row-2,
-.row-3,
-.row-4 {
-    height: 30%;
-    flex-direction: column;
-    color: #333;
-}
-
-.name,
-.email,
-.tel {
-    height: 45%;
-    font-size: 20px;
-    color: #777;
-}
-
-.row-5 {
-    flex-direction: column;
-    color: #333;
-    height: 50%;
-}
-
-.ask {
-    height: 70%;
-    padding-top: 10px;       /* Přidej padding nahoře pro lepší vzhled (můžeš upravit hodnotu) */
-    font-size: 20px;         /* Velikost textu */
-    box-sizing: border-box;
-    color: #777;
-}
-
-.row-6 {
-    height: 20%;
-}
-
-.row-6 button {
-    width: 30%;
-    font-size: 24px;
-    color: #afafaf;
-    background-color: white;
-    border: solid;
-    border-color: #c3c3c3;
-    border-radius: 5px;
-    border-width: 1px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Přidá hladký přechod */
-}
-
-.row-6 button:hover {
-    border-color: #777;
-    color: #777;
-}
-
 
 .column-2 {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
+  flex: 1 1 400px;
+  max-width: 600px;
 }
 
 .sec-row {
-    margin-right: 10px;
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 20px;
-    margin-bottom: 15px;
-    width: 90%;
+  margin-bottom: 20px;
 }
-
-.sec-row-3 {display: flex; gap: 10px; height: 30%; margin-top: 20px;}
 
 .sec-row-1 {
-    height: 10%;
-    font-size: 30px;
-    align-items: center;
-    margin-bottom: 35px;
-    color: #777;
+  font-size: 1.5rem;
+  color: #777;
+  margin-bottom: 15px;
 }
 
-.sec-row-inner {
-    gap: 10px;
+.map {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
 }
 
-.sec-row-inner-1,
-.sec-row-inner-2 {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
+.inner-column-1,
+.inner-column-2,
+.inner-column-3,
+.inner-column-4 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #333;
 }
 
-.inner-column-1 {
-    height: 40%;
-    width: 100%;
-    font-size: 19px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.inner-column-2 {
-    font-size: 19px;
-    color: #333;
-}
 .inner-column-1 p,
 .inner-column-2 p,
 .inner-column-3 p,
 .inner-column-4 p {
-    color: #777;
+  color: #777;
 }
 
-.inner-column-3 {
-    height: 35%;
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 19px;
-}
+/* Responzivita */
+@media (max-width: 600px) {
+  .menu-text {
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    display: none;
+  }
 
-.inner-column-4 {
-    height: 30%;
-    color: #333;
+  .menu-text.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+  .top-text {
+        font-size: 1rem; /* menší velikost pro mobil */
+        max-width: 70%;
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+        }
+
+   .menu-text span::after {
+        content: '';
+    }     
 }
