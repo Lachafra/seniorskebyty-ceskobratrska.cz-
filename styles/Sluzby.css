@@ -1,180 +1,234 @@
 body {
-    font-family: 'Metropolis', sans-serif;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden; /* Zabraňuje horizontálnímu scrollování */
-    font-stretch: condensed;
-    font-style: normal;
+  font-family: 'Metropolis', sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-stretch: condensed;
+  font-style: normal;
 }
 
 a {
-    text-decoration: none; /* Zruší podtržení */
-    color: inherit; /* Nastaví barvu podle rodiče, ne výchozí modrou */
+  text-decoration: none;
+  color: inherit;
 }
 a:hover {
-    color: #333; /* Barva při najetí myší (můžeš přizpůsobit podle potřeby) */
+  color: #333;
 }
 
 .top {
-    position: absolute;
-    top: 0;
-    height: 15%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  flex-wrap: wrap;
 }
 
 .top-text {
-    color: black;
-    top: 38%;
-    position: absolute;
-    left: 3%;
-    font-size: 25px;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-    font-weight: 100;
-    cursor: pointer;
+  flex-shrink: 1;
+  flex-grow: 1;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: left;
+  white-space: nowrap; /* zabrání zalomení textu */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;    
 }
 
 .menu {
-    position: absolute;
-    flex-direction: column;
-    height: 7%;
-    width: 57%;
-    top: 40.5%;
-    right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  position: relative;
 }
 
 .menu-text {
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    gap: 10px;
-    font-size: 18px;
-    top: 50%;
-    letter-spacing: 2px;
-    transition: font-weight 0.3s ease;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
-
-}
-
-.menu-text :hover {
-    font-weight: bold;
+  display: flex;
+  gap: 15px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .menu-text span::after {
-    content: ' /';
-    
+  content: ' /';
 }
 
 .menu-text span:last-child::after {
-    content: '';
+  content: '';
 }
 
+.menu-text a:hover {
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.menu-toggle div {
+  width: 22px;
+  height: 2px;
+  background-color: black;
+  margin: 4px 0;
+}
+
+.menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 22px;
+      height: 2px;
+      background-color: black;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 600px) {
+      .menu-text {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        top: 60px;
+        right: 20px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        min-width: 150px;
+      }
+
+      .menu-text.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-text span::after {
+        content: '';
+      }
+
+      .top-text {
+        font-size: 1rem; /* menší velikost pro mobil */
+        max-width: 70%;
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+        }
+    }
+
 .grey-square {
-    background-color: rgb(244, 243, 243);
-    position: absolute;
-    top: 15%;
-    width: 100%;
-    height: 10%;
+  background-color: rgb(244, 243, 243);
+  height: 60px;
+  width: 100%;
 }
 
 .mid {
-    position: absolute;
-    height: 120%;
-    width: 100%;
-    top: 25%;
-    font-family: Playfair Display Flex, Playfair-Display-Fallback, Apple Color Emoji, Noto Color Emoji, serif;
+  padding: 40px 20px;
+  font-family: 'Playfair Display', serif;
 }
 
 .title {
-    position: relative;
-    height: 10%;
-    width: 15%;
-    align-items: center;
-    justify-content: center;
-    left: 6%;
-    top: -5%;
-    font-size: 50px;
-    color: #777;
-    font-weight: 400;
+  font-size: 2.5rem;
+  color: #777;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
 .layout {
-    position: relative;
-    display: flex;
-    left: 5.3%;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .column {
-    padding: 10px; /* Odsazení mezi sloupci */
-    box-sizing: border-box; /* Zahrnuje padding do šířky sloupce */
-}
-
-.column-1 {
-    flex: 1; /* První sloupec zabírá stejnou šířku jako třetí */
-}
-
-.column-2 {
-    flex: 2; /* Druhý sloupec zabírá dvojnásobnou šířku než první a třetí */
-}
-
-.column-3 {
-    flex: 1; /* Třetí sloupec zabírá stejnou šířku jako první */
+  flex: 1;
+  min-width: 250px;
 }
 
 .row {
-    margin: 5px 0; /* Odsazení mezi řádky */
-    padding: 3px; /* Odsazení uvnitř řádků */
-    text-align: left;
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #999;
 }
 
-/* Specifické barvy pro každý řádek */
-.row-1 { height: 35%; } /* Světle červená */
-.row-2 { height: 37%; } /* Světle modrá */
-.row-3 { height: 25%; } /* Světle zelená */
-.row-4 { position: relative; left: 5%; width: 60%; height: 40%; } /* Blanšírovaný mandlový */
-.row-5, .row-6, .row-7, .row-8 { position: relative; right: 60%; }
-
-.row-5 { height: 30%; width: 120%; }
-.row-6 { height: 30%; width: 120%; line-height: 40px; }
-.row-7 { height: 10%; }
-.row-8 { height: 10%; }
-
-.row-1, .row-2, .row-3, .row-4, .row-5, .row-6, .row-7, .row-8 {
-    font-size: 28px;
-    margin: 5px 0;
-    padding: 3px;
-    text-align: left;
-    color: #999;
-}
-
-
-.row-1 p, .row-2 p, .row-3 p, .row-4 p, .row-5 p, .row-6 p {
-    font-size: 18px;
-    line-height: 25px;
-    color: #999;
+.row p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #999;
 }
 
 .jidelni-button {
-    position: relative;
-    top: -32%;
-    width: 13%;
-    left: 41.5%;
-    height: 8%;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .jidelni-button button {
-    width: 100%;
-    height: 100%;
-    background-color: #777;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 22px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Přidá hladký přechod */
+  padding: 10px 20px;
+  background-color: #777;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .jidelni-button button:hover {
-    background-color: #888; /* Zesvětlená barva pozadí */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Přidá stínování */
+  background-color: #888;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .menu-text {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: auto;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 150px;
+  }
+
+  .menu-text.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .row {
+    font-size: 1.2rem;
+  }
+
+  .row p {
+    font-size: 0.95rem;
+  }
 }
